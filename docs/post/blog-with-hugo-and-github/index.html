@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>用 Hugo 搭建 Blog 并部署在 GitHub 上 - Blue Dreams</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="夜阑听风" /><meta name="description" content="缘由 FarBox 挺好用的，只需要在提供的编辑器中书写，剩下的事情就都不需要操心了。然而它就像 Python 2 一样，已经进入了倒计时。之前购买了 Basic 套餐，到期时间是 2020" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.85.0 with theme even" />
+
+
+<link rel="canonical" href="https://hezhizhen.github.io/blog/post/blog-with-hugo-and-github/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/blog/favicon-16x16.png">
+<link rel="manifest" href="/blog/manifest.json">
+<link rel="mask-icon" href="/blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/blog/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="用 Hugo 搭建 Blog 并部署在 GitHub 上" />
+<meta property="og:description" content="缘由 FarBox 挺好用的，只需要在提供的编辑器中书写，剩下的事情就都不需要操心了。然而它就像 Python 2 一样，已经进入了倒计时。之前购买了 Basic 套餐，到期时间是 2020" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hezhizhen.github.io/blog/post/blog-with-hugo-and-github/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-05-18T16:57:26+08:00" />
+<meta property="article:modified_time" content="2019-05-18T16:57:26+08:00" />
+
+<meta itemprop="name" content="用 Hugo 搭建 Blog 并部署在 GitHub 上">
+<meta itemprop="description" content="缘由 FarBox 挺好用的，只需要在提供的编辑器中书写，剩下的事情就都不需要操心了。然而它就像 Python 2 一样，已经进入了倒计时。之前购买了 Basic 套餐，到期时间是 2020"><meta itemprop="datePublished" content="2019-05-18T16:57:26+08:00" />
+<meta itemprop="dateModified" content="2019-05-18T16:57:26+08:00" />
+<meta itemprop="wordCount" content="2051">
+<meta itemprop="keywords" content="Hugo,GitHub,Blog,FarBox," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用 Hugo 搭建 Blog 并部署在 GitHub 上"/>
+<meta name="twitter:description" content="缘由 FarBox 挺好用的，只需要在提供的编辑器中书写，剩下的事情就都不需要操心了。然而它就像 Python 2 一样，已经进入了倒计时。之前购买了 Basic 套餐，到期时间是 2020"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/blog/" class="logo">蓝梦轩</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/blog/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/blog/" class="logo">蓝梦轩</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/blog/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">用 Hugo 搭建 Blog 并部署在 GitHub 上</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-18 </span>
+        <div class="post-category">
+            <a href="/blog/categories/%E5%8D%9A%E5%AE%A2%E5%8F%98%E8%BF%81%E5%8F%B2/"> 博客变迁史 </a>
+            </div>
+          <span class="more-meta"> 约 2051 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/blog/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#缘由">缘由</a></li>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#定制">定制</a>
+          <ul>
+            <li><a href="#主题">主题</a></li>
+            <li><a href="#语言">语言</a></li>
+            <li><a href="#图标">图标</a></li>
+            <li><a href="#front-matter">Front Matter</a></li>
+            <li><a href="#评论">评论</a></li>
+          </ul>
+        </li>
+        <li><a href="#部署">部署</a>
+          <ul>
+            <li><a href="#一个-github-仓库">一个 GitHub 仓库</a></li>
+            <li><a href="#github--dropbox">GitHub + Dropbox</a></li>
+            <li><a href="#两个-github-仓库">两个 GitHub 仓库</a></li>
+            <li><a href="#一些坑">一些坑</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考资料">参考资料</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="缘由">缘由</h2>
+<p>FarBox 挺好用的，只需要在提供的编辑器中书写，剩下的事情就都不需要操心了。然而它就像 Python 2 一样，已经进入了倒计时。之前购买了 Basic 套餐，到期时间是 2020 年暑假。并没有太强烈的意愿转向 Bitcron，毕竟这只是一个自娱自乐的小角落。既然无人问津，我也不想特别正式地买个服务器再买个域名。此前微软收购了 GitHub 后开放了无限私有仓库的福利，就想着不如再用回 GitHub Pages 吧。</p>
+<p>Hexo 还是 Hugo，这个问题我并没有纠结太久，因为看中的几款主题是 Hugo 的，就选择了后者。之后陆续看了几十篇关于用 Hugo 搭建博客的文章，但总有些问题没有想清楚。今天想着干脆直接做吧，遇到了再看怎么办好了。</p>
+<h2 id="安装">安装</h2>
+<p>大体的步骤，别的文章和<a href="https://gohugo.io/documentation/">官方文档</a>已经说得够详细了，我就不再多加解释了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">brew install hugo
+<span class="c1"># 挑个风水好的目录，切换到那</span>
+hugo new site blog
+hugo new post/hello.md
+hugo server -D <span class="c1"># 草稿也加入预览</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="定制">定制</h2>
+<p>我看中了几款主题，有 <a href="https://github.com/Track3/hermit">Hermit</a>、<a href="https://github.com/olOwOlo/hugo-theme-even">Even</a> 等。经过一番比较，Even 暂时排名第一，于是就选择它作为主题了。克隆到 <code>themes</code> 目录下后，照着它的指示一点点调整。</p>
+<h3 id="主题">主题</h3>
+<p>我先把 <code>exampleSite</code> 目录下的 <code>config.toml</code> 文件复制到根目录，然后逐项进行修改。由于例子中有详细的注释，这些修改没有什么需要特别说明的。</p>
+<p>期间为了更清晰地看到调整前后的对比，我把例子中的 posts 也一并复制到了根目录下的 <code>content</code> 目录中。</p>
+<h3 id="语言">语言</h3>
+<p>Even 支持多语言，自带了 <code>i18n</code> 目录。我应该主要写的是中文，于是在 <code>config.toml</code> 中设置 <code>defaultContentLanguage=&quot;zh-cn&quot;</code>。</p>
+<p>随意打开其中的 <code>yaml</code> 文件，发现是一些翻译。在本地页面上浏览，没什么问题，但还是想做点调整。本来是直接修改 <code>themes</code> 中的文件，后来看到说明，就把文件复制到了根目录进行调整。</p>
+<h3 id="图标">图标</h3>
+<p>挑选了早年的一张自拍，使用提供的<a href="https://realfavicongenerator.net/">网址</a>生成所需的文件，将它们都保存到根目录下的 <code>static</code> 目录下。其中需要把 <code>site.webmanifest</code> 重命名为 <code>manifest.json</code>，并从 <code>themes/even/static/</code> 中复制 <code>safari-pinned-tab.svg</code> 到根目录的 <code>static</code> 中。</p>
+<h3 id="front-matter">Front Matter</h3>
+<p>默认的模板只有3个选项：标题、日期、是否为草稿。我将 <code>themes/even/archetypes/default.md</code> 直接复制到根目录下的 <code>archetypes</code> 中，并设置为默认开启 <code>toc</code>。</p>
+<h3 id="评论">评论</h3>
+<p>我之前都没有自己设置过评论，FarBox 自带了评论系统。这次我选择的是 Disqus，因为之前在访问别人的博客时留下过一些评论，想着就继续用它好了。</p>
+<p>Hugo 的文档上关于添加 Disqus 的部分很简单，只需要填写 <code>disqusShortname</code> 就好。我打开<a href="https://disqus.com/">官网</a> ，根据安装的指南创建了一个站点，并把 ShortName 填入了 <code>config.toml</code> 中。</p>
+<p>目前本地并没有显示评论系统，不知道推送之后网页上是否会正常显示。</p>
+<p>看了看主题仓库的 issue，其中提到说本地不会加载评论框，那么无论是否开启，我在本地都看不到了。看到 front matter 中 <code>comment</code> 为关闭，我设置为开启，也不知道是否这样就可以了，先推送试试看。</p>
+<p>刷新一下网页，果然可以了，那么就在模板中默认打开评论吧。</p>
+<h2 id="部署">部署</h2>
+<p>在根目录下执行 <code>hugo</code> 后，会生成 <code>public</code> 目录，将其中的内容推送到 <code>github.io</code> 这个仓库中，即可正常显示博客内容。许多人的做法是只将这些内容保存到 GitHub，而问题在于，假如换一台电脑，根目录下的所有内容就丢失了。所以，我希望根目录下的内容也能保存到 GitHub。</p>
+<h3 id="一个-github-仓库">一个 GitHub 仓库</h3>
+<p>这个做法是以前用 <code>simiki</code> 写 <code>wiki</code> 的时候学到的。大致的步骤可以分为3步：</p>
+<ol>
+<li>将 <code>public</code> 中的内容作为 <code>master</code> 分支推送到 <code>github.io</code> 中</li>
+<li>将根目录下的所有内容 作为 <code>source</code> 分支推送到 <code>github.io</code> 中（可忽略 <code>public</code> 中的内容）</li>
+<li>利用 <a href="https://travis-ci.org/">Travis CI</a> 自动部署，每次 <code>source</code> 分支更新后，自动更新 <code>master</code> 分支</li>
+</ol>
+<p>这种做法的方便之处在于“一库两用”，<code>github.io</code> 既托管了博客，又保存了源文件。但是，我有点小小的私心，只想展示博客，却不愿让人看到源文件，所以尝试后转向其他的解决方案。</p>
+<h3 id="github--dropbox">GitHub + Dropbox</h3>
+<p>由于我使用 Dropbox 作为私人云盘，所以很自然就想到把源文件保存在其中。试了试，还不错，但好像还有点不如意的地方。</p>
+<h3 id="两个-github-仓库">两个 GitHub 仓库</h3>
+<p>除了 <code>github.io</code> 外，再创建另外一个仓库来保存这些原始文件。这个做法比较冗余，一开始的时候我直接跳过了，但是现在别的方法试了试都不够满意，那么就只好再回来试试这个。</p>
+<p>为了每次写完后不必推送两次，我从其他人的仓库中找到了一个部署脚本，做的事情很简单：生成 <code>public</code> 中的内容，然后分别将两处的内容推送到两个仓库中。简单改了改 warning，试了试，也还可以。</p>
+<p>三种方案都尝试了一遍，并没有特别满意的，但是相对而言，最后一种方案于我有更少的 cost，于是就选择了它。</p>
+<h3 id="一些坑">一些坑</h3>
+<p>首先是私有仓库的限制。尽管微软允许免费用户创建无限量的私有仓库，但是 GitHub Pages 还是不能从私有仓库中创建。在 <a href="https://github.com/pricing">Pricing</a> 的 Compare features 中，免费用户的 Pages and wikis 要求是公开仓库。在仓库的 <code>Settings</code> 中，GitHub Pages 也赫然写着 <code>Upgrade to GitHub Pro or make this repository public to enable Pages</code>。所以，为了博客能用，<code>github.io</code> 这个仓库必须是公开的，最多只能设置另外那个仓库为私有。</p>
+<p>当我将仓库设置为公开后，等了许久，博客还是显示为404，回到仓库的设置页，也告诉我正在使用 master 分支部署。可是左等右等等不来，于是就搜索了一下，发现也有人遇到过和我一样的问题，而解决方案居然是：挑选一个 Jekyll 主题，哪怕你并不用它来部署博客。看到这个解决方案的时候，我心里真是一片羊驼奔腾而过。随意挑了一个主题，保存后刷新博客网址，瞬间就出来了。好吧，反正以后应该不会再有涉及到它的操作，就当它不存在吧。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://vinurs.me/post/blog-with-hugo-and-orgmode/">用hugo搭建blog</a></li>
+<li><a href="http://simiki.org/zh-docs/deploy.html">部署 - simiki</a></li>
+</ul>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/blog/tags/hugo/">Hugo</a>
+          <a href="/blog/tags/github/">GitHub</a>
+          <a href="/blog/tags/blog/">Blog</a>
+          <a href="/blog/tags/farbox/">FarBox</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/blog/post/go-code-review-comments/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Go Code Review Comments</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/blog/post/zhuan-tou-farbox/">
+            <span class="next-text nav-default">转投 Farbox</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'littlepoint';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:hezhizhen.yi@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/hezhizhen" class="iconfont icon-github" title="github"></a>
+  <a href="https://hezhizhen.github.io/blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    与 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 一同成长
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/blog/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/blog/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2000 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>夜阑听风</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/blog/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

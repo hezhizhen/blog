@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://hezhizhen.github.io/blog/sitemap.xml
