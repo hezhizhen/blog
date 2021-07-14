@@ -2,7 +2,7 @@
 title: "用 Hugo 搭建 Blog 并部署在 GitHub 上"
 date: 2019-05-18T16:57:26+08:00
 lastmod: 2019-05-18T16:57:26+08:00
-draft: false
+draft: true
 keywords: []
 description: ""
 tags: ["Hugo", "GitHub", "Blog", "FarBox"]
