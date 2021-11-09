@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.85.0 with theme even" />
+<meta name="generator" content="Hugo 0.89.0 with theme even" />
 
 
 <link rel="canonical" href="https://hezhizhen.github.io/blog/post/go-code-review-comments/" />
@@ -201,13 +201,13 @@
 <p>声明空的 slice 时，更推荐使用 <code>var</code> 而非 <code>:=</code> 的方式，例子如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// prefer
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// prefer
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">t</span> <span class="p">[]</span><span class="kt">string</span>
 <span class="c1">// not prefer
 </span><span class="c1"></span><span class="nx">t</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{}</span>
@@ -224,11 +224,11 @@
 <p>错误信息不应该大写或以标点符号结束，除非如 URL 这种名词或者 ID 这样的缩写。错误信息一般不单独打印，而是放在上下文中，比如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">err</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;something bad&#34;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">err</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;something bad&#34;</span><span class="p">)</span>
 <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Reading %s: %v&#34;</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
@@ -251,11 +251,11 @@
 <p>在 C/C++ 中，函数返回像 -1 或 null 这样的特殊值来表示错误。Go 就不用这么节省了，在返回结果的时候返回额外的一个值来表示返回结果是否有效，而这个额外的返回值可以是错误类型，也可以是布尔类型，并且应该是最后一个返回值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Lookup returns the value for key or ok=false if there is no mapping for key.
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Lookup returns the value for key or ok=false if there is no mapping for key.
 </span><span class="c1"></span><span class="kd">func</span> <span class="nf">Lookup</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">value</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
@@ -264,7 +264,7 @@
 <p>简单来说，为了使代码更简洁易读，先处理错误，同时避免使用 <code>else</code>。举个例子：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -272,7 +272,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// handle error first
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// handle error first
 </span><span class="c1"></span><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
   <span class="c1">// error handling
 </span><span class="c1"></span>  <span class="k">return</span> <span class="c1">// or continue, etc.
@@ -308,7 +308,7 @@
 <p>包的注释必须在包的声明的附近，且没有空行与之分隔。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -318,7 +318,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Package math provides basic constants and mathematical functions.
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Package math provides basic constants and mathematical functions.
 </span><span class="c1"></span><span class="kn">package</span> <span class="nx">math</span>
 <span class="cm">/*
 </span><span class="cm">Package template implements data-driven templates for generating textual
@@ -356,12 +356,12 @@
 <p>测试失败的时候，应该给出有帮助的消息，指明到底是哪里错了，失败的输入是什么，实际输出和预期输出又是什么。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="k">if</span> <span class="nx">got</span> <span class="o">!=</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="k">if</span> <span class="nx">got</span> <span class="o">!=</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span> <span class="p">{</span>
     <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Foo(%q) = %d; want %d&#34;</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">in</span><span class="p">,</span> <span class="nx">got</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span><span class="p">)</span> <span class="c1">// or Fatalf, if test can&#39;t test anything more past this point
 </span><span class="c1"></span><span class="p">}</span>
 </code></pre></td></tr></table>
@@ -370,11 +370,11 @@
 <p>另一种常用来消除测试失败歧义的方式是将其用不同的测试函数包裹。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">TestSingleValue</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span> <span class="nf">testHelper</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">80</span><span class="p">})</span> <span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">TestSingleValue</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span> <span class="nf">testHelper</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">80</span><span class="p">})</span> <span class="p">}</span>
 <span class="kd">func</span> <span class="nf">TestNoValues</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span>    <span class="p">{</span> <span class="nf">testHelper</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{})</span> <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
