@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.90.1 with theme even" />
+<meta name="generator" content="Hugo 0.106.0 with theme even" />
 
 
 <link rel="canonical" href="https://hezhizhen.github.io/blog/post/go-code-review-comments/" />
@@ -67,7 +67,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/blog/" class="logo">蓝梦轩</a>
+    <a href="/" class="logo">蓝梦轩</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -98,7 +98,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/blog/" class="logo">蓝梦轩</a>
+  <a href="/" class="logo">蓝梦轩</a>
 </div>
 
 
@@ -207,11 +207,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// prefer
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">t</span> <span class="p">[]</span><span class="kt">string</span>
-<span class="c1">// not prefer
-</span><span class="c1"></span><span class="nx">t</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// prefer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">t</span> <span class="p">[]</span><span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// not prefer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">t</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。</p>
 <h2 id="crypto-rand">Crypto Rand</h2>
@@ -228,9 +228,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">err</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;something bad&#34;</span><span class="p">)</span>
-<span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Reading %s: %v&#34;</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">err</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;something bad&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Reading %s: %v&#34;</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果把 <code>something</code> 的首字母大写，那么 log 的输出就会显得奇怪。</p>
 <h2 id="examples">Examples</h2>
@@ -255,9 +255,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Lookup returns the value for key or ok=false if there is no mapping for key.
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Lookup</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">value</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// Lookup returns the value for key or ok=false if there is no mapping for key.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">Lookup</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">value</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>假如没有最后的返回值，有可能会出现编译错误。现在有了它，代码变得更健壮，可读性也更高。当然，无论导出还是未导出，都推荐这么做。</p>
 <h2 id="indent-error-flow">Indent Error Flow</h2>
@@ -272,13 +272,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// handle error first
-</span><span class="c1"></span><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-  <span class="c1">// error handling
-</span><span class="c1"></span>  <span class="k">return</span> <span class="c1">// or continue, etc.
-</span><span class="c1"></span><span class="p">}</span>
-<span class="c1">// normal code
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// handle error first
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// error handling
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="c1">// or continue, etc.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// normal code
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>另外，假如 <code>if</code> 里面有声明语句的话，就单独放一行。</p>
 <h2 id="initialisms">Initialisms</h2>
@@ -318,15 +318,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Package math provides basic constants and mathematical functions.
-</span><span class="c1"></span><span class="kn">package</span> <span class="nx">math</span>
-<span class="cm">/*
-</span><span class="cm">Package template implements data-driven templates for generating textual
-</span><span class="cm">output such as HTML.
-</span><span class="cm">....
-</span><span class="cm">*/</span>
-<span class="kn">package</span> <span class="nx">template</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// Package math provides basic constants and mathematical functions.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">package</span> <span class="nx">math</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">Package template implements data-driven templates for generating textual
+</span></span></span><span class="line"><span class="cl"><span class="cm">output such as HTML.
+</span></span></span><span class="line"><span class="cl"><span class="cm">....
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">template</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>以上是两种包注释的方式， 和普通的注释一样。对于 <code>main</code> 这个包，你还可以用其他的注释风格。另外，小写字母开头还是不行。</p>
 <h2 id="package-names">Package Names</h2>
@@ -361,10 +361,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="k">if</span> <span class="nx">got</span> <span class="o">!=</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span> <span class="p">{</span>
-    <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Foo(%q) = %d; want %d&#34;</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">in</span><span class="p">,</span> <span class="nx">got</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span><span class="p">)</span> <span class="c1">// or Fatalf, if test can&#39;t test anything more past this point
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">got</span> <span class="o">!=</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Foo(%q) = %d; want %d&#34;</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">in</span><span class="p">,</span> <span class="nx">got</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span><span class="p">)</span> <span class="c1">// or Fatalf, if test can&#39;t test anything more past this point
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一个典型的 Go 的测试失败的写法如上所示，同时注意顺序是实际输出不同于预期输出。</p>
 <p>另一种常用来消除测试失败歧义的方式是将其用不同的测试函数包裹。</p>
@@ -374,9 +374,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">TestSingleValue</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span> <span class="nf">testHelper</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">80</span><span class="p">})</span> <span class="p">}</span>
-<span class="kd">func</span> <span class="nf">TestNoValues</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span>    <span class="p">{</span> <span class="nf">testHelper</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{})</span> <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestSingleValue</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span> <span class="nf">testHelper</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">80</span><span class="p">})</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestNoValues</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span>    <span class="p">{</span> <span class="nf">testHelper</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{})</span> <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="variable-names">Variable Names</h2>
 <p>Go 中变量名宜短不宜长，尤其是对于局部变量，比如用 <code>i</code> 胜过用 <code>sliceIndex</code>。</p>
@@ -450,7 +450,7 @@
   <span class="copyright-year">
     &copy; 
     2000 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>夜阑听风</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>夜阑听风</span>
   </span>
 </div>
 
@@ -467,7 +467,7 @@
 
 
 
-<script type="text/javascript" src="/blog/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 
