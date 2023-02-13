@@ -32,8 +32,6 @@ weight: 50
 * Reeder
 * Overcast
 
-## 书
-
 ## 影
 
 ### 阿斯哈·法哈蒂
