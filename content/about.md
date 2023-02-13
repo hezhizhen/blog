@@ -20,18 +20,6 @@ weight: 50
 * [Wille](https://dnc1994.com/)
 * [Neverland](https://type.cyhsu.xyz/)
 
-## 物
-
-> They are not just tools.
-
-* Vim
-* Chrome
-* iTerm2
-* Fish Shell
-* 1Password
-* Reeder
-* Overcast
-
 ## 影
 
 ### 阿斯哈·法哈蒂
@@ -299,5 +287,3 @@ weight: 50
 - [x] 少林足球（2001）
 - [x] 功夫（2004）
 - [x] 长江七号（2008）
-
-## 音
