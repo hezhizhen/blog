@@ -12,6 +12,8 @@ weight: 40
 
 ## Movie
 
+- [罗马假日](https://movie.douban.com/subject/1293839/) 是 1953 年的黑白电影，距今已有 70 年了，但其中的情感仍能穿越 70 年的风尘打动今时的我。在公主犹疑地念着官方说辞然后突然坚定地说出「Rome! By all means, Rome.」的瞬间，我登时落下泪来。翻着豆瓣和知乎的影评，我最喜欢的一个说法是「学会告别」。How to properly say goodbye to those who can't stay? 这是已经看过了一些生离和死别的我还没有学会的一件事。
+
 ## Podcast
 
 ## Software / Service
