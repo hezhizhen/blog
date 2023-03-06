@@ -1,2 +1,3 @@
 User-agent: *
+Disallow:
 Sitemap: https://hezhizhen.github.io/blog/sitemap.xml
