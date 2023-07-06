@@ -7,12 +7,12 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2000–2023; all rights reserved</copyright>
-    <lastBuildDate>Wed, 05 Jun 2019 22:16:36 +0800</lastBuildDate><atom:link href="https://hezhizhen.github.io/blog/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Jun 2019 22:16:36 +0800</lastBuildDate>
+    <atom:link href="https://hezhizhen.github.io/blog/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go Code Review Comments</title>
       <link>https://hezhizhen.github.io/blog/post/go-code-review-comments/</link>
       <pubDate>Wed, 05 Jun 2019 22:16:36 +0800</pubDate>
-      
       <guid>https://hezhizhen.github.io/blog/post/go-code-review-comments/</guid>
       <description>Go 写了这么久，却一直没有把 Go Code Review Comments 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。
 一开头就声明，这只是一份常见错误的列表，而非综合的风格指南，亦可作为 Effective Go 的一份补充。
@@ -23,6 +23,5 @@ Copying 从其他包中复制结构体的时候，要小心避免预期外的别
 Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := 的方式，例子如下：
 // prefer var t []string // not prefer t := []string{} 两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。</description>
     </item>
-    
   </channel>
 </rss>
