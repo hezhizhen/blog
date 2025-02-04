@@ -1,48 +1,23 @@
 baseURL = "https://hezhizhen.github.io/blog"
-title = "Blue Dreams"
-# author = "夜阑听风"
-copyright = "Copyright © 2000–2023; all rights reserved"
-paginate = 5                                             # 首页每页显示的文章数
-languageCode = "en"
-defaultContentLanguage = "zh-cn"                         # en / zh-cn / ... (This field determines which i18n file to use)
-enableInlineShortcodes = true
-theme = "paper"
-
+title = "蓝梦轩"
+copyright = "© 夜阑听风"
+languageCode = "zh-cn"                       # en-us / zh-cn / ...
+theme = "archie"
 publishDir = "docs"
-preserveTaxonomyNames = true
-enableRobotsTXT = true
-enableEmoji = true
-enableGitInfo = false        # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
-
-[author]
-name = "夜阑听风"
-
-# Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
-pygmentsOptions = "linenos=table"
+pygmentsstyle = "monokai"
 pygmentsCodefences = true
-pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
 
-hasCJKLanguage = true # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
-
-disqusShortname = "littlepoint" # disqus_shortname
-
-[sitemap] # essential                     # 必需
-changefreq = "weekly"
-priority = 0.5
-filename = "sitemap.xml"
 
 [menu]
-# [[menu.main]]
-# name = "Home"
-# weight = 10
-# identifier = "home"
-# url = "/"
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
 [[menu.main]]
 name = "Archives"
-weight = 20
-identifier = "archives"
-url = "/post/"
+weight = 2
+url = "/post"
 # [[menu.main]]
 # name = "Tags"
 # weight = 30
@@ -55,104 +30,12 @@ url = "/post/"
 # url = "/categories/"
 
 [params]
-color = "linen"
-twitter = ""
-github = "hezhizhen"
-instagram = ""
-avatar = "hezhizhen.yi@gmail.com"
-name = "夜阑听风"
-bio = "Seize the day. Gather ye rosebuds while ye may."
+mode = "auto"
+useCDN = false
+subtitle = "Seize the day. Gather ye rosebuds while ye may."
 
-since = "2000" # Site creation time          # 站点建立时间
-# use public git repo url to link lastmod git commit, enableGitInfo should be true.
-# 指定 git 仓库地址，可以生成指向最近更新的 git commit 的链接，需要将 enableGitInfo 设置成 true.
-gitRepo = ""
 
-# site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-logoTitle = "蓝梦轩"                    # default: the title value    # 默认值: 上面设置的title值
-keywords = ["Hugo", "theme", "even"]
-description = "我的地盘"
-
-# paginate of archives, tags and categories             # 归档、标签、分类每页显示的文章数目，建议修改为一个较大的值
-archivePaginate = 100
-
-# show 'xx Posts In Total' in archive page ?            # 是否在归档页显示文章的总数
-showArchiveCount = true
-
-# The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
-dateFormatToUse = "2006-01-02"
-
-# show word count and read time ?                       # 是否显示字数统计与阅读时间
-moreMeta = true
-
-# Syntax highlighting by highlight.js
-highlightInClient = false
-
-# 一些全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能，在 archetypes/default.md 查看更多信息。
-# Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
-toc = true              # 是否开启目录
-autoCollapseToc = false # Auto expand and collapse toc                              # 目录自动展开/折叠
-fancybox = true         # see https://github.com/fancyapps/fancybox                 # 是否启用fancybox（图片可点击）
-
-# mathjax
-mathjax = true                   # see https://www.mathjax.org/                              # 是否使用mathjax（数学公式）
-mathjaxEnableSingleDollar = true # 是否使用 $...$ 即可進行inline latex渲染
-mathjaxEnableAutoNumber = true   # 是否使用公式自动编号
-mathjaxUseLocalFiles = false     # You should install mathjax in `your-site/static/lib/mathjax`
-
-postMetaInFooter = true # contain author, lastMod, markdown link, license           # 包含作者，上次修改时间，markdown链接，许可信息
-linkToMarkDown = false  # Only effective when hugo will output .md files.           # 链接到markdown原始文件（仅当允许hugo生成markdown文件时有效）
-contentCopyright = ''   # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
-
-changyanAppid = ""  # Changyan app id             # 畅言
-changyanAppkey = "" # Changyan app key
-
-livereUID = "" # LiveRe UID                  # 来必力
-
-# Link custom CSS and JS assets
-#   (relative to /static/css and /static/js respectively)
-customCSS = []
-customJS = []
-
-uglyURLs = false # please keep same with uglyurls setting
-
-# Show language selector for multilingual site.
-showLanguageSelector = false
-
-# Display a message at the beginning of an article to warn the readers that it's content may be outdated.
-# 在文章开头显示提示信息，提醒读者文章内容可能过时。
-[params.outdatedInfoWarning]
-enable = true
-hint = 30     # Display hint if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示提醒
-warn = 180    # Display warning if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示警告
-
-# See https://gohugo.io/about/hugo-and-gdpr/
-[privacy]
-[privacy.vimeo]
-disabled = false
-simple = true
-[privacy.twitter]
-disabled = false
-enableDNT = true
-simple = true
-[privacy.instagram]
-disabled = false
-simple = true
-[privacy.googleAnalytics]
-anonymizeIP = true # 12.214.31.144 -> 12.214.31.0
-[privacy.youtube]
-disabled = false
-privacyEnhanced = true
-
-[services]
-[services.instagram]
-disableInlineCSS = true
-[services.twitter]
-disableInlineCSS = true
-
-# see https://gohugo.io/getting-started/configuration-markup
-[markup]
-[markup.tableOfContents]
-startLevel = 1
-[markup.goldmark.renderer]
-unsafe = true
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/hezhizhen"

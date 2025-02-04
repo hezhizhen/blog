@@ -1,347 +1,97 @@
-<!doctype html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
-  lang="en"
->
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-
-  
-  <title>Go Code Review Comments - Blue Dreams</title>
-
-  
-  <meta name="theme-color" />
-
-  
-  
-  
-  
-  <meta name="description" content="Go 写了这么久，却一直没有把 Go Code Review Comments 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Go Code Review Comments - 蓝梦轩</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Go 写了这么久，却一直没有把 Go Code Review Comments 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。
+一开头就声明，这只是一份常见错误的列表，而非综合的风格指南，亦可作为 Effective Go 的一份补充。
+Gofmt
+建议使用 gofmt 来修复一些风格上的问题。像 vs code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 goimports，它除了能胜任 gofmt 的工作之外，还能自动添加和删除导入的包，并分类排序。
+Comment Sentences
+注释应当是完整的句子，以被注释的对象名开始，以句号结束。
+Contexts
+Go 一般显式地在整个函数调用链中传递 Contexts，并作为第一个参数。除此之外，不要在结构体（struct）中添加 Context 类型的元素，而是给该结构体的每一个方法添加 ctx 参数。
+Copying
+从其他包中复制结构体的时候，要小心避免预期外的别名。如果某个类型的方法其 receiver 为该类型的指针，就不要复制该类型的值。
+Declaring Empty Slices
+声明空的 slice 时，更推荐使用 var 而非 := 的方式，例子如下：
+// prefer
+var t []string
+// not prefer
+t := []string{}
+两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。
+Crypto Rand
+不要用 math/rand 这个包来生成 keys，即使是用完就丢的那种，因为 unseeded 会使得生成器完全可预测。应该使用 crypto/rand 这个包。" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://hezhizhen.github.io/blog/post/go-code-review-comments/">
+  <meta property="og:site_name" content="蓝梦轩">
+  <meta property="og:title" content="Go Code Review Comments">
+  <meta property="og:description" content="Go 写了这么久，却一直没有把 Go Code Review Comments 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。
 一开头就声明，这只是一份常见错误的列表，而非综合的风格指南，亦可作为 Effective Go 的一份补充。
 Gofmt 建议使用 gofmt 来修复一些风格上的问题。像 vs code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 goimports，它除了能胜任 gofmt 的工作之外，还能自动添加和删除导入的包，并分类排序。
 Comment Sentences 注释应当是完整的句子，以被注释的对象名开始，以句号结束。
 Contexts Go 一般显式地在整个函数调用链中传递 Contexts，并作为第一个参数。除此之外，不要在结构体（struct）中添加 Context 类型的元素，而是给该结构体的每一个方法添加 ctx 参数。
 Copying 从其他包中复制结构体的时候，要小心避免预期外的别名。如果某个类型的方法其 receiver 为该类型的指针，就不要复制该类型的值。
 Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := 的方式，例子如下：
-// prefer var t []string // not prefer t := []string{} 两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。" />
-  <meta name="author" content="夜阑听风" />
-  
+// prefer var t []string // not prefer t := []string{} 两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。
+Crypto Rand 不要用 math/rand 这个包来生成 keys，即使是用完就丢的那种，因为 unseeded 会使得生成器完全可预测。应该使用 crypto/rand 这个包。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-06-05T22:16:36+08:00">
+    <meta property="article:modified_time" content="2019-06-05T22:16:36+08:00">
+    <meta property="article:tag" content="Go">
+    <meta property="article:tag" content="Code Review">
 
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://hezhizhen.github.io/blog/main.min.css" />
-
-  
-  
-  
-  
-  
-  <link rel="preload" as="image" href="https://hezhizhen.github.io/blog/theme.png" />
-
-  
-  
-  
-  
-  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6eb1741e943fd1b46f00a2fa875a056e?s=160&amp;d=identicon" />
-  
-  
-
-  
-  
-  <link rel="preload" as="image" href="https://hezhizhen.github.io/blog/twitter.svg" />
-  
-  <link rel="preload" as="image" href="https://hezhizhen.github.io/blog/github.svg" />
-  
-  <link rel="preload" as="image" href="https://hezhizhen.github.io/blog/instagram.svg" />
-  
-  
-
-  
-  
-  <script
-    defer
-    src="https://hezhizhen.github.io/blog/highlight.min.js"
-    onload="hljs.initHighlightingOnLoad();"
-  ></script>
-  
-
-  
-  
-  
-
-  
-  <link rel="icon" href="https://hezhizhen.github.io/blog/favicon.ico" />
-  <link rel="apple-touch-icon" href="https://hezhizhen.github.io/blog/apple-touch-icon.png" />
-
-  
-  <meta name="generator" content="Hugo 0.120.3">
-
-  
-  
-  
-  
-  
-  <meta itemprop="name" content="Go Code Review Comments">
-<meta itemprop="description" content="Go 写了这么久，却一直没有把 Go Code Review Comments 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Go Code Review Comments">
+  <meta name="twitter:description" content="Go 写了这么久，却一直没有把 Go Code Review Comments 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。
 一开头就声明，这只是一份常见错误的列表，而非综合的风格指南，亦可作为 Effective Go 的一份补充。
 Gofmt 建议使用 gofmt 来修复一些风格上的问题。像 vs code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 goimports，它除了能胜任 gofmt 的工作之外，还能自动添加和删除导入的包，并分类排序。
 Comment Sentences 注释应当是完整的句子，以被注释的对象名开始，以句号结束。
 Contexts Go 一般显式地在整个函数调用链中传递 Contexts，并作为第一个参数。除此之外，不要在结构体（struct）中添加 Context 类型的元素，而是给该结构体的每一个方法添加 ctx 参数。
 Copying 从其他包中复制结构体的时候，要小心避免预期外的别名。如果某个类型的方法其 receiver 为该类型的指针，就不要复制该类型的值。
 Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := 的方式，例子如下：
-// prefer var t []string // not prefer t := []string{} 两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。"><meta itemprop="datePublished" content="2019-06-05T22:16:36+08:00" />
-<meta itemprop="dateModified" content="2019-06-05T22:16:36+08:00" />
-<meta itemprop="wordCount" content="412">
-<meta itemprop="keywords" content="Go,Code Review," />
-  
-  <meta property="og:title" content="Go Code Review Comments" />
-<meta property="og:description" content="Go 写了这么久，却一直没有把 Go Code Review Comments 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。
-一开头就声明，这只是一份常见错误的列表，而非综合的风格指南，亦可作为 Effective Go 的一份补充。
-Gofmt 建议使用 gofmt 来修复一些风格上的问题。像 vs code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 goimports，它除了能胜任 gofmt 的工作之外，还能自动添加和删除导入的包，并分类排序。
-Comment Sentences 注释应当是完整的句子，以被注释的对象名开始，以句号结束。
-Contexts Go 一般显式地在整个函数调用链中传递 Contexts，并作为第一个参数。除此之外，不要在结构体（struct）中添加 Context 类型的元素，而是给该结构体的每一个方法添加 ctx 参数。
-Copying 从其他包中复制结构体的时候，要小心避免预期外的别名。如果某个类型的方法其 receiver 为该类型的指针，就不要复制该类型的值。
-Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := 的方式，例子如下：
-// prefer var t []string // not prefer t := []string{} 两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://hezhizhen.github.io/blog/post/go-code-review-comments/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-06-05T22:16:36+08:00" />
-<meta property="article:modified_time" content="2019-06-05T22:16:36+08:00" />
+// prefer var t []string // not prefer t := []string{} 两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。
+Crypto Rand 不要用 math/rand 这个包来生成 keys，即使是用完就丢的那种，因为 unseeded 会使得生成器完全可预测。应该使用 crypto/rand 这个包。">
 
+        <link href="https://hezhizhen.github.io/blog/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
 
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go Code Review Comments"/>
-<meta name="twitter:description" content="Go 写了这么久，却一直没有把 Go Code Review Comments 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。
-一开头就声明，这只是一份常见错误的列表，而非综合的风格指南，亦可作为 Effective Go 的一份补充。
-Gofmt 建议使用 gofmt 来修复一些风格上的问题。像 vs code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 goimports，它除了能胜任 gofmt 的工作之外，还能自动添加和删除导入的包，并分类排序。
-Comment Sentences 注释应当是完整的句子，以被注释的对象名开始，以句号结束。
-Contexts Go 一般显式地在整个函数调用链中传递 Contexts，并作为第一个参数。除此之外，不要在结构体（struct）中添加 Context 类型的元素，而是给该结构体的每一个方法添加 ctx 参数。
-Copying 从其他包中复制结构体的时候，要小心避免预期外的别名。如果某个类型的方法其 receiver 为该类型的指针，就不要复制该类型的值。
-Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := 的方式，例子如下：
-// prefer var t []string // not prefer t := []string{} 两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。"/>
-
-  
-  
-  
-  <link rel="canonical" href="https://hezhizhen.github.io/blog/post/go-code-review-comments/" />
-  
-  
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://hezhizhen.github.io/blog/css/main.6a0f23ea50fd34b46fee262a5a68e17d458c51a2bc99ba1ba018065de6b180c3.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://hezhizhen.github.io/blog/css/dark.50b57e12d401420df23965fed157368aba37b76df0ecefd0b1ecd4da664f01a0.css" media="(prefers-color-scheme: dark)"  />
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://hezhizhen.github.io/blog"
-      >Blue Dreams</a
-    >
-    <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  
-
-  <script>
-    
-    const htmlClass = document.documentElement.classList;
-    setTimeout(() => {
-      htmlClass.remove('not-ready');
-    }, 10);
-
-    
-    const btnMenu = document.querySelector('.btn-menu');
-    btnMenu.addEventListener('click', () => {
-      htmlClass.toggle('open');
-    });
-
-    
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const lightBg = '#faf8f1'.replace(/"/g, '');
-    const setDark = (isDark) => {
-      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
-      htmlClass[isDark ? 'add' : 'remove']('dark');
-      localStorage.setItem('dark', isDark);
-    };
-
-    
-    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    if (htmlClass.contains('dark')) {
-      setDark(true);
-    } else {
-      const darkVal = localStorage.getItem('dark');
-      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
-    }
-
-    
-    darkScheme.addEventListener('change', (event) => {
-      setDark(event.matches);
-    });
-
-    
-    const btnDark = document.querySelector('.btn-dark');
-    btnDark.addEventListener('click', () => {
-      setDark(localStorage.getItem('dark') !== 'true');
-    });
-  </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/blog/post/"
-        >Archives</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/blog/recommendations/"
-        >Recommendations</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/blog/about/"
-        >About</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
-    >
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./twitter.svg)"
-        href="https://twitter.com/"
-        target="_blank"
-        rel="me"
-      >
-        twitter
-      </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/hezhizhen"
-        target="_blank"
-        rel="me"
-      >
-        github
-      </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./instagram.svg)"
-        href="https://instagram.com/"
-        target="_blank"
-        rel="me"
-      >
-        instagram
-      </a>
-      
-    </nav>
-    
-  </div>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://hezhizhen.github.io/">蓝梦轩</a>
+	</div>
+	<nav>
+		
+		<a href="/blog/">Home</a>
+		
+		<a href="/blog/post">Archives</a>
+		
+		<a href="/blog/recommendations/">Recommendations</a>
+		
+		<a href="/blog/about/">About</a>
+		
+		
+	</nav>
 </header>
 
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
+<main>
+  <article>
+    <div class="post-container">
       
-
-<article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">Go Code Review Comments</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>Jun 5, 2019</time>
-      
-      
-      
-      
-      <span class="mx-1">&middot;</span>
-      <span>夜阑听风</span>
-      
-    </div>
-    
-  </header>
-
-  <section><p>Go 写了这么久，却一直没有把 <a href="https://github.com/golang/go/wiki/CodeReviewComments">Go Code Review Comments</a> 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。</p>
+      <div class="post-content">
+        <div class="title">
+          <h1 class="title">Go Code Review Comments</h1>
+          <div class="meta">Posted on Jun 5, 2019</div>
+        </div>
+        
+        <section class="body">
+          <p>Go 写了这么久，却一直没有把 <a href="https://github.com/golang/go/wiki/CodeReviewComments">Go Code Review Comments</a> 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。</p>
 <p>一开头就声明，这只是一份常见错误的列表，而非综合的风格指南，亦可作为 <a href="https://golang.org/doc/effective_go.html">Effective Go</a> 的一份补充。</p>
 <h2 id="gofmt">Gofmt</h2>
 <p>建议使用 <code>gofmt</code> 来修复一些风格上的问题。像 vs code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 <code>goimports</code>，它除了能胜任 <code>gofmt</code> 的工作之外，还能自动添加和删除导入的包，并分类排序。</p>
@@ -353,10 +103,10 @@ Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := �
 <p>从其他包中复制结构体的时候，要小心避免预期外的别名。如果某个类型的方法其 receiver 为该类型的指针，就不要复制该类型的值。</p>
 <h2 id="declaring-empty-slices">Declaring Empty Slices</h2>
 <p>声明空的 slice 时，更推荐使用 <code>var</code> 而非 <code>:=</code> 的方式，例子如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// prefer
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span> []<span style="color:#66d9ef">string</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// not prefer
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// prefer</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span> []<span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// not prefer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{}
 </span></span></code></pre></div><p>两种方式得到的 slice 功能相同，有相同的长度和容量，并且都为0，区别在于：第一种方式得到的是 nil slice，而第二种方式得到的是长度为0的非 nil slice。nil slice 是更推荐的风格。这个问题之前叶古和我说过几次，说不要写第二种方式这样的代码，会让人觉得 Go 没学好。</p>
 <h2 id="crypto-rand">Crypto Rand</h2>
 <p>不要用 <code>math/rand</code> 这个包来生成 keys，即使是用完就丢的那种，因为 unseeded 会使得生成器完全可预测。应该使用 <code>crypto/rand</code> 这个包。</p>
@@ -385,18 +135,18 @@ Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := �
 <p>不要使用 <code>import . &quot;foo&quot;</code> 这种方式，因为这会混淆一个结构或函数究竟是当前包的还是导入包的。例外的情况是避免循环导入。</p>
 <h2 id="in-band-errors">In-Band Errors</h2>
 <p>在 C/C++ 中，函数返回像 -1 或 null 这样的特殊值来表示错误。Go 就不用这么节省了，在返回结果的时候返回额外的一个值来表示返回结果是否有效，而这个额外的返回值可以是错误类型，也可以是布尔类型，并且应该是最后一个返回值。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Lookup returns the value for key or ok=false if there is no mapping for key.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Lookup</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">ok</span> <span style="color:#66d9ef">bool</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Lookup returns the value for key or ok=false if there is no mapping for key.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Lookup</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">ok</span> <span style="color:#66d9ef">bool</span>)
 </span></span></code></pre></div><p>假如没有最后的返回值，有可能会出现编译错误。现在有了它，代码变得更健壮，可读性也更高。当然，无论导出还是未导出，都推荐这么做。</p>
 <h2 id="indent-error-flow">Indent Error Flow</h2>
 <p>简单来说，为了使代码更简洁易读，先处理错误，同时避免使用 <code>else</code>。举个例子：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// handle error first
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// error handling
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#75715e">// or continue, etc.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// normal code
-</span></span></span></code></pre></div><p>另外，假如 <code>if</code> 里面有声明语句的话，就单独放一行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// handle error first</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// error handling</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#75715e">// or continue, etc.</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// normal code</span>
+</span></span></code></pre></div><p>另外，假如 <code>if</code> 里面有声明语句的话，就单独放一行。</p>
 <h2 id="initialisms">Initialisms</h2>
 <p>Initialisms 和缩写的名称一般全大写，比如 URL 和 ID。生成的代码会无视这条规则，手写的代码要有更高的要求。</p>
 <h2 id="interfaces">Interfaces</h2>
@@ -422,8 +172,8 @@ Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := �
 <p>直接一个 <code>return</code>。假如函数的返回值被命名了，那么可以不用显式地返回它们。</p>
 <h2 id="package-comments">Package Comments</h2>
 <p>包的注释必须在包的声明的附近，且没有空行与之分隔。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Package math provides basic constants and mathematical functions.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">math</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Package math provides basic constants and mathematical functions.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">math</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">Package template implements data-driven templates for generating textual
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">output such as HTML.
@@ -457,8 +207,8 @@ Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := �
 <h2 id="useful-test-failures">Useful Test Failures</h2>
 <p>测试失败的时候，应该给出有帮助的消息，指明到底是哪里错了，失败的输入是什么，实际输出和预期输出又是什么。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">got</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">tt</span>.<span style="color:#a6e22e">want</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Foo(%q) = %d; want %d&#34;</span>, <span style="color:#a6e22e">tt</span>.<span style="color:#a6e22e">in</span>, <span style="color:#a6e22e">got</span>, <span style="color:#a6e22e">tt</span>.<span style="color:#a6e22e">want</span>) <span style="color:#75715e">// or Fatalf, if test can&#39;t test anything more past this point
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Foo(%q) = %d; want %d&#34;</span>, <span style="color:#a6e22e">tt</span>.<span style="color:#a6e22e">in</span>, <span style="color:#a6e22e">got</span>, <span style="color:#a6e22e">tt</span>.<span style="color:#a6e22e">want</span>) <span style="color:#75715e">// or Fatalf, if test can&#39;t test anything more past this point</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>一个典型的 Go 的测试失败的写法如上所示，同时注意顺序是实际输出不同于预期输出。</p>
 <p>另一种常用来消除测试失败歧义的方式是将其用不同的测试函数包裹。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestSingleValue</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) { <span style="color:#a6e22e">testHelper</span>(<span style="color:#a6e22e">t</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">80</span>}) }
@@ -467,75 +217,82 @@ Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := �
 <p>Go 中变量名宜短不宜长，尤其是对于局部变量，比如用 <code>i</code> 胜过用 <code>sliceIndex</code>。</p>
 <p>基本的规则是：一个名称从声明到使用的距离越远，这个名称就必须越有内涵。因此，对于一个方法的接收者，一两个字母也就够了，常见的变量如循环的下标和值可以是单个字母，而全局变量则需要更多的字母。</p>
 <p>我之前看一些文章说变量名的命名要有意义，想着是不是应该把 for loop 中的下标也改成长而自描述的写法，然而刷题的时候总是偷懒继续用 <code>i</code>、<code>j</code> 等，看到这个，觉得轻松不少。</p>
-</section>
 
-  
-  
-  <footer class="mt-12 flex flex-wrap">
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://hezhizhen.github.io/blog/tags/go"
-      >Go</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://hezhizhen.github.io/blog/tags/code-review"
-      >Code Review</a
-    >
-    
-  </footer>
-  
+        </section>
+        <div class="post-tags">
+          
+          
+          <nav class="nav tags">
+            <ul class="tags">
+              
+              <li><a href="/tags/go">Go</a></li>
+              
+              <li><a href="/tags/code-review">Code Review</a></li>
+              
+            </ul>
+          </nav>
+          
+          
+        </div>
+      </div>
 
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://hezhizhen.github.io/blog/post/movie-review-for-silenced/"
-      ><span>《熔炉》观后感</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
+      
+      
+      <div class="toc">
+        <strong>Table of contents:</strong>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gofmt">Gofmt</a></li>
+    <li><a href="#comment-sentences">Comment Sentences</a></li>
+    <li><a href="#contexts">Contexts</a></li>
+    <li><a href="#copying">Copying</a></li>
+    <li><a href="#declaring-empty-slices">Declaring Empty Slices</a></li>
+    <li><a href="#crypto-rand">Crypto Rand</a></li>
+    <li><a href="#doc-comments">Doc Comments</a></li>
+    <li><a href="#dont-panic">Don&rsquo;t Panic</a></li>
+    <li><a href="#error-strings">Error Strings</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#goroutine-lifetimes">Goroutine Lifetimes</a></li>
+    <li><a href="#handle-errors">Handle Errors</a></li>
+    <li><a href="#imports">Imports</a></li>
+    <li><a href="#importblank">ImportBlank</a></li>
+    <li><a href="#import-dot">Import Dot</a></li>
+    <li><a href="#in-band-errors">In-Band Errors</a></li>
+    <li><a href="#indent-error-flow">Indent Error Flow</a></li>
+    <li><a href="#initialisms">Initialisms</a></li>
+    <li><a href="#interfaces">Interfaces</a></li>
+    <li><a href="#line-length">Line Length</a></li>
+    <li><a href="#mixed-caps">Mixed Caps</a></li>
+    <li><a href="#named-result-parameters">Named Result Parameters</a></li>
+    <li><a href="#naked-returns">Naked Returns</a></li>
+    <li><a href="#package-comments">Package Comments</a></li>
+    <li><a href="#package-names">Package Names</a></li>
+    <li><a href="#pass-values">Pass Values</a></li>
+    <li><a href="#receiver-names">Receiver Names</a></li>
+    <li><a href="#receiver-type">Receiver Type</a></li>
+    <li><a href="#synchronous-functions">Synchronous Functions</a></li>
+    <li><a href="#useful-test-failures">Useful Test Failures</a></li>
+    <li><a href="#variable-names">Variable Names</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
 
-  
-  
-
-  
-  
-
-  
-  
-</article>
-
-
-    </main>
-
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
->
-  <div class="mr-auto">
-    &copy; 2023
-    <a class="link" href="https://hezhizhen.github.io/blog">Blue Dreams</a>
+    </article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/hezhizhen" rel="me" title="GitHub"><svg class="feather">
+   <use href="/blog/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
+</svg></a><a class="border"></a></div>
+  <div class="footer-info">
+    2025  © 夜阑听风 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
   </div>
-  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Powered by Hugo️️</a
-  >️
-  <a
-    class="link"
-    href="https://github.com/nanxiaobei/hugo-paper"
-    rel="noopener"
-    target="_blank"
-    >✎ Paper</a
-  >
 </footer>
 
-  </body>
+
+
+</div>
+    </body>
 </html>
