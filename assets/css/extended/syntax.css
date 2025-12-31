@@ -1,0 +1,4 @@
+/* 确保代码高亮颜色不被覆盖 */
+.chroma {
+    color: inherit;
+}

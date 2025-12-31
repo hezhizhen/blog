@@ -1,6 +1,6 @@
 baseURL = "https://hezhizhen.github.io/blog"
 title = "蓝梦轩"
-copyright = "© 夜阑听风"
+copyright = "2026 © 夜阑听风"
 languageCode = "zh-cn"
 theme = "PaperMod"
 publishDir = "docs"
@@ -58,7 +58,7 @@ mainSections = ["post"]
 
 # 显示控制
 showReadingTime = true
-showWordCount = false
+showWordCount = true
 showShareButtons = false
 showPostNavLinks = true
 showBreadCrumbs = true
