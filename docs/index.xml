@@ -37,7 +37,7 @@
       <description>&lt;p&gt;Go 写了这么久，却一直没有把 &lt;a href=&#34;https://github.com/golang/go/wiki/CodeReviewComments&#34;&gt;Go Code Review Comments&lt;/a&gt; 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。&lt;/p&gt;
 &lt;p&gt;一开头就声明，这只是一份常见错误的列表，而非综合的风格指南，亦可作为 &lt;a href=&#34;https://golang.org/doc/effective_go.html&#34;&gt;Effective Go&lt;/a&gt; 的一份补充。&lt;/p&gt;
 &lt;h2 id=&#34;gofmt&#34;&gt;Gofmt&lt;/h2&gt;
-&lt;p&gt;建议使用 &lt;code&gt;gofmt&lt;/code&gt; 来修复一些风格上的问题。像 vs code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 &lt;code&gt;goimports&lt;/code&gt;，它除了能胜任 &lt;code&gt;gofmt&lt;/code&gt; 的工作之外，还能自动添加和删除导入的包，并分类排序。&lt;/p&gt;
+&lt;p&gt;建议使用 &lt;code&gt;gofmt&lt;/code&gt; 来修复一些风格上的问题。像 VS Code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 &lt;code&gt;goimports&lt;/code&gt;，它除了能胜任 &lt;code&gt;gofmt&lt;/code&gt; 的工作之外，还能自动添加和删除导入的包，并分类排序。&lt;/p&gt;
 &lt;h2 id=&#34;comment-sentences&#34;&gt;Comment Sentences&lt;/h2&gt;
 &lt;p&gt;注释应当是完整的句子，以被注释的对象名开始，以句号结束。&lt;/p&gt;
 &lt;h2 id=&#34;contexts&#34;&gt;Contexts&lt;/h2&gt;

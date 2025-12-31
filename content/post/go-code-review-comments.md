@@ -13,7 +13,7 @@ Go 写了这么久，却一直没有把 [Go Code Review Comments](https://github
 
 ## Gofmt
 
-建议使用 `gofmt` 来修复一些风格上的问题。像 vs code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 `goimports`，它除了能胜任 `gofmt` 的工作之外，还能自动添加和删除导入的包，并分类排序。
+建议使用 `gofmt` 来修复一些风格上的问题。像 VS Code 之类的编辑器在安装 Go 的插件后，设置中会让你选择何时格式化代码，一般在保存时就够了。我使用的是 `goimports`，它除了能胜任 `gofmt` 的工作之外，还能自动添加和删除导入的包，并分类排序。
 
 ## Comment Sentences
 
