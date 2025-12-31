@@ -1,43 +1,10 @@
 ---
 title: "《熔炉》观后感"
 date: 2015-06-27T22:16:00+08:00
-lastmod: 2015-06-27T22:16:00+08:00
 draft: false
-keywords: []
 description: ""
 tags: []
 categories: []
-author: ""
-
-# You can also close(false) or open(true) something for this content.
-# P.S. comment can only be closed
-comment: true
-toc: true
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-# You can also define another contentCopyright. e.g. contentCopyright: "This is another copyright."
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-mathjaxEnableAutoNumber: false
-
-# You unlisted posts you might want not want the header or footer to show
-hideHeaderAndFooter: false
-
-# You can enable or disable out-of-date content warning for individual post.
-# Comment this out to use the global config.
-#enableOutdatedInfoWarning: false
-
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
-
 ---
 
 昨晚回到家，本打算把微电子的两份实验报告补上，顺便再做一点图形学的实验；然而写了一天的套话终究有些心力交瘁，加之淫雨霏霏，实在提不起丝毫努力的渴望，于是吃完晚饭勉强撑了一会儿后便早早地去睡了。

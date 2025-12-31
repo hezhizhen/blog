@@ -1,9 +1,6 @@
 ---
-title: "About"
+title: "关于"
 date: 2000-07-15T00:00:00+08:00
-menu: "main"
-weight: 50
-
 ---
 
 ## 我

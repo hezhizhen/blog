@@ -1,43 +1,10 @@
 ---
 title: "Go Code Review Comments"
 date: 2019-06-05T22:16:36+08:00
-lastmod: 2019-06-05T22:16:36+08:00
 draft: false
-keywords: []
 description: ""
-tags: ["Go","Code Review"]
+tags: ["Go", "Code Review"]
 categories: ["Go"]
-author: ""
-
-# You can also close(false) or open(true) something for this content.
-# P.S. comment can only be closed
-comment: true
-toc: true
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-# You can also define another contentCopyright. e.g. contentCopyright: "This is another copyright."
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-mathjaxEnableAutoNumber: false
-
-# You unlisted posts you might want not want the header or footer to show
-hideHeaderAndFooter: false
-
-# You can enable or disable out-of-date content warning for individual post.
-# Comment this out to use the global config.
-#enableOutdatedInfoWarning: false
-
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
-
 ---
 
 Go 写了这么久，却一直没有把 [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) 完整地看一遍。今天看了一篇 Go 的文章，里面提到了它，索性就仔细一读。

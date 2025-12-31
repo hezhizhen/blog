@@ -1,43 +1,10 @@
 ---
 title: "凡塵之歌"
 date: 2013-12-15T00:16:00+08:00
-lastmod: 2013-12-15T00:16:00+08:00
 draft: true
-keywords: []
 description: ""
 tags: []
 categories: []
-author: ""
-
-# You can also close(false) or open(true) something for this content.
-# P.S. comment can only be closed
-comment: true
-toc: true
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-# You can also define another contentCopyright. e.g. contentCopyright: "This is another copyright."
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-mathjaxEnableAutoNumber: false
-
-# You unlisted posts you might want not want the header or footer to show
-hideHeaderAndFooter: false
-
-# You can enable or disable out-of-date content warning for individual post.
-# Comment this out to use the global config.
-#enableOutdatedInfoWarning: false
-
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
-
 ---
 
 每個人心裏都住着魔鬼，幸福是它的牢籠。當一切幸福都化作泡影，魔鬼就會沖破牢籠高唱着血腥的聖歌浮現。那時候，絕望的人將所向無敵。——《龍族》

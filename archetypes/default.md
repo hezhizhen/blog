@@ -1,43 +1,41 @@
 ---
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 date: {{ .Date }}
-lastmod: {{ .Date }}
 draft: true
-keywords: []
 description: ""
+summary: ""
 tags: []
 categories: []
 author: ""
+weight: 0
 
-# You can also close(false) or open(true) something for this content.
-# P.S. comment can only be closed
-comment: true
-toc: true
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-# You can also define another contentCopyright. e.g. contentCopyright: "This is another copyright."
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-mathjaxEnableAutoNumber: false
+# 目录
+ShowToc: true
+TocOpen: false
 
-# You unlisted posts you might want not want the header or footer to show
-hideHeaderAndFooter: false
+# 封面图片
+cover:
+  image: ""
+  alt: ""
+  caption: ""
+  hidden: false
+  hiddenInSingle: false
+  relative: false
+  responsiveImages: true
 
-# You can enable or disable out-of-date content warning for individual post.
-# Comment this out to use the global config.
-#enableOutdatedInfoWarning: false
+# 显示控制
+hideMeta: false
+hideAuthor: false
+ShowReadingTime: true
+ShowWordCount: false
+ShowBreadCrumbs: true
+ShowPostNavLinks: true
+ShowCodeCopyButtons: true
+disableAnchoredHeadings: false
+disableShare: true
+searchHidden: false
 
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
-
+# 规范链接
+canonicalURL: ""
+ShowCanonicalLink: false
 ---
-
-<!--more-->

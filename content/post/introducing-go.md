@@ -1,43 +1,10 @@
 ---
 title: "WIP: Introducing Go"
 date: 2019-05-18T21:19:38+08:00
-lastmod: 2019-05-18T21:19:38+08:00
 draft: true
-keywords: []
 description: ""
 tags: ["Go", "Book", "O'Reilly", "Caleb Doxsey"]
 categories: ["读书笔记"]
-author: ""
-
-# You can also close(false) or open(true) something for this content.
-# P.S. comment can only be closed
-comment: true
-toc: true
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-# You can also define another contentCopyright. e.g. contentCopyright: "This is another copyright."
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-mathjaxEnableAutoNumber: false
-
-# You unlisted posts you might want not want the header or footer to show
-hideHeaderAndFooter: false
-
-# You can enable or disable out-of-date content warning for individual post.
-# Comment this out to use the global config.
-#enableOutdatedInfoWarning: false
-
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
-
 ---
 
 这两天在看 ***Modern Vim***，发现这本书很适合跟着做，书看完了，你也有一个基本可用的 Vim 了。然而昨天连续看了一下午，到吃晚饭的时候感觉有点恶心，就顺手打开别的书，就是这本 ***Introducing Go***。本意是想随便找本书来换换脑子缓解不舒服的感觉，然而这本书写得极简单，而我又有一些 Go 的经验，所以看得极快。等晚饭的空隙看了前半本，睡前继续看，从23点多上床看到凌晨1点不到，就把剩下的部分都看完了。我自问是个看书极慢的人，总是害怕错过一点信息和知识，想不到我也有三四个小时读完一本124页的书的一日，只恨是在深夜读完，不然仰天大笑出门去。

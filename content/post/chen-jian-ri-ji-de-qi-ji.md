@@ -1,43 +1,10 @@
 ---
 title: "晨间日记的奇迹"
 date: 2019-05-31T20:12:31+08:00
-lastmod: 2019-05-31T20:12:31+08:00
 draft: true
-keywords: []
 description: ""
 tags: ["佐藤传", "Book", "Diary"]
 categories: ["读书笔记"]
-author: ""
-
-# You can also close(false) or open(true) something for this content.
-# P.S. comment can only be closed
-comment: true
-toc: true
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-# You can also define another contentCopyright. e.g. contentCopyright: "This is another copyright."
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-mathjaxEnableAutoNumber: false
-
-# You unlisted posts you might want not want the header or footer to show
-hideHeaderAndFooter: false
-
-# You can enable or disable out-of-date content warning for individual post.
-# Comment this out to use the global config.
-#enableOutdatedInfoWarning: false
-
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
-
 ---
 
 前天晚上躺在床上看Kindle，忽然不想看《洞察》了，就往后翻，随手挑了这本《晨间日记的奇迹》。这本书很短，每章的内容也不多，一节基本上都能在最小字号的一页內显示完，所以读着没有压力。当晚看了20%多一点就睡着了，今天下午带了Kindle过去等晚饭，饭后继续看，19:30的时候看完了全书。算起来，总共也就两三个小时。

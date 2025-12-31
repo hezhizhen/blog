@@ -1,41 +1,152 @@
 baseURL = "https://hezhizhen.github.io/blog"
 title = "蓝梦轩"
 copyright = "© 夜阑听风"
-languageCode = "zh-cn"                       # en-us / zh-cn / ...
-theme = "archie"
+languageCode = "zh-cn"
+theme = "PaperMod"
 publishDir = "docs"
-pygmentsstyle = "monokai"
-pygmentsCodefences = true
-pygmentsCodefencesGuessSyntax = true
 
+# ==================== 代码高亮 ====================
+[markup]
+  [markup.highlight]
+    style = "onedark"
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    guessSyntax = true
 
+# ==================== 菜单 ====================
 [menu]
-[[menu.main]]
-name = "Home"
-url = "/"
-weight = 1
-[[menu.main]]
-name = "Archives"
-weight = 2
-url = "/post"
-# [[menu.main]]
-# name = "Tags"
-# weight = 30
-# identifier = "tags"
-# url = "/tags/"
-# [[menu.main]]
-# name = "Categories"
-# weight = 40
-# identifier = "categories"
-# url = "/categories/"
+  [[menu.main]]
+    name = "主页"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "归档"
+    url = "/archives/"
+    weight = 2
+  [[menu.main]]
+    name = "标签"
+    url = "/tags/"
+    weight = 3
+  [[menu.main]]
+    name = "推荐"
+    url = "/recommendations/"
+    weight = 4
+  [[menu.main]]
+    name = "关于"
+    url = "/about/"
+    weight = 5
 
+# ==================== 参数 ====================
 [params]
-mode = "auto"
-useCDN = false
-subtitle = "Seize the day. Gather ye rosebuds while ye may."
+  # 作者
+  author = "夜阑听风"
 
+  # 网站描述和关键词（用于 SEO）
+  description = "个人博客"
+  keywords = ["博客", "技术", "生活"]
 
-[[params.social]]
-name = "GitHub"
-icon = "github"
-url = "https://github.com/hezhizhen"
+  # 日期格式
+  DateFormat = "2006-01-02"
+
+  # 主题模式：auto / light / dark
+  defaultTheme = "auto"
+  disableThemeToggle = false
+
+  # 主内容区域（用于归档页等）
+  mainSections = ["post"]
+
+  # 显示控制
+  showReadingTime = true
+  showWordCount = false
+  showShareButtons = false
+  showPostNavLinks = true
+  showBreadCrumbs = true
+  showCodeCopyButtons = true
+  disableScrollToTop = false
+  disableSpecial1stPost = false
+  ShowAllPagesInArchive = false
+  ShowFullTextinRSS = false
+
+  # 目录
+  ShowToc = true
+  TocOpen = false
+
+  # 首页信息
+  [params.homeInfoParams]
+    Title = "蓝梦轩"
+    Content = "Seize the day. Gather ye rosebuds while ye may."
+    # AlignSocialIconsTo = "right"
+
+  # 网站 Logo
+  [params.label]
+    text = "蓝梦轩"
+    # icon = "/apple-touch-icon.png"
+    # iconHeight = 35
+
+  # 封面图片全局设置
+  [params.cover]
+    linkFullImages = true
+    responsiveImages = true
+
+  # 编辑文章链接
+  # [params.editPost]
+  #   URL = "https://github.com/hezhizhen/blog/edit/master/content"
+  #   Text = "编辑"
+  #   appendFilePath = true
+
+  # 页脚
+  [params.footer]
+    hideCopyright = false
+    # text = "自定义页脚文字"
+
+  # 搜索配置（Fuse.js）
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+  # Schema.org 配置
+  [params.schema]
+    publisherType = "Person"
+    # sameAs = ["https://twitter.com/xxx", "https://github.com/xxx"]
+
+  # 资源文件
+  [params.assets]
+    # favicon = "favicon.ico"
+    # favicon16x16 = "favicon-16x16.png"
+    # favicon32x32 = "favicon-32x32.png"
+    # apple_touch_icon = "apple-touch-icon.png"
+    # safari_pinned_tab = "safari-pinned-tab.svg"
+    # theme_color = "#2e2e33"
+    # msapplication_TileColor = "#2e2e33"
+    disableScrollBarStyle = false
+    disableFingerprinting = false
+
+  # 统计分析
+  # [params.analytics]
+  #   [params.analytics.google]
+  #     SiteVerificationTag = ""
+  #   [params.analytics.bing]
+  #     SiteVerificationTag = ""
+  #   [params.analytics.yandex]
+  #     SiteVerificationTag = ""
+
+  # 社交图标
+  [[params.socialIcons]]
+    name = "github"
+    title = "GitHub"
+    url = "https://github.com/hezhizhen"
+
+  [[params.socialIcons]]
+    name = "rss"
+    title = "RSS"
+    url = "/blog/index.xml"
+
+# ==================== 输出 ====================
+[outputs]
+  home = ["HTML", "RSS"]
