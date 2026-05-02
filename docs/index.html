@@ -2,7 +2,7 @@
 <html lang="en" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.153.5"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.161.1"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,7 +11,7 @@
 <meta name="description" content="个人博客">
 <meta name="author" content="夜阑听风">
 <link rel="canonical" href="https://hezhizhen.github.io/blog/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.7318b722a3e6f676e634743656ac41f4163e18d26039dab61a848285f3f0c67e.css" integrity="sha256-cxi3IqPm9nbmNHQ2VqxB9BY&#43;GNJgOdq2GoSChfPwxn4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.0fbc0d1b19f98ecb318593c8e1b6fe84488df744b38d83065f9884d136f330c2.css" integrity="sha256-D7wNGxn5jssxhZPI4bb&#43;hEiN90SzjYMGX5iE0TbzMMI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://hezhizhen.github.io/blog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://hezhizhen.github.io/blog/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://hezhizhen.github.io/blog/favicon-32x32.png">
@@ -53,12 +53,6 @@
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -76,11 +70,12 @@
   <meta property="og:site_name" content="蓝梦轩">
   <meta property="og:title" content="蓝梦轩">
   <meta property="og:description" content="个人博客">
-  <meta property="og:locale" content="zh-cn">
+  <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蓝梦轩">
-<meta name="twitter:description" content="个人博客">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="蓝梦轩">
+  <meta name="twitter:description" content="个人博客">
 
 <script type="application/ld+json">
 {
@@ -98,17 +93,17 @@
 </head>
 <body class="list" id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://hezhizhen.github.io/blog/" accesskey="h" title="蓝梦轩 (Alt + H)">蓝梦轩</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -124,7 +119,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://hezhizhen.github.io/blog/" title="Home">
                     <span class="active">Home</span>
@@ -158,8 +153,10 @@
     <header class="entry-header">
         <h1>Blue Dreams</h1>
     </header>
-    <div class="entry-content">
-        Seize the day. Gather ye rosebuds while ye may.
+    <div class="entry-content md-content">
+        
+        <p>Seize the day. Gather ye rosebuds while ye may.</p>
+
     </div>
     <footer class="entry-footer">
         <div class="social-icons" >
@@ -257,9 +254,11 @@ Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := �
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
@@ -298,14 +297,13 @@ Declaring Empty Slices 声明空的 slice 时，更推荐使用 var 而非 := �
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
